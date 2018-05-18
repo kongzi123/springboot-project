@@ -2,6 +2,8 @@ package com.example.demo.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import com.example.demo.util.StringUtil;
 
 @Service
 public class DemoServiceImpl implements IDemoService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(DemoServiceImpl.class);
 
 	@Autowired
 	private DemoMapper demoMapper;
@@ -27,11 +31,13 @@ public class DemoServiceImpl implements IDemoService {
 		//查询缓存
 		List<Demo> list = redisClient.lRange(RedisKeyConstant.ALL_DEMOS, 0, -1);
 		if(StringUtil.isEmptyList(list)) {
+			logger.debug("缓存中不存在demo信息");
 			listDemos = demoMapper.queryAllDemo();
 			
 			//缓存中不存在，则添加
 			redisClient.lPush(RedisKeyConstant.ALL_DEMOS, listDemos);
 		} else {			
+			logger.debug("从缓存中获取demo信息");
 			listDemos = (List<Demo>)list;
 		}
 		
