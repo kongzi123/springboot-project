@@ -15,6 +15,11 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
+/**
+ * redis客户端
+ * @author Administrator
+ *
+ */
 @Service
 public class RedisClient {
 	
