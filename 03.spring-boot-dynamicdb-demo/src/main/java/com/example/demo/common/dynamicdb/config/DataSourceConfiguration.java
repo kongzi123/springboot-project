@@ -19,7 +19,6 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.example.demo.common.dynamicdb.DynamicDbContextHolder;
 import com.example.demo.common.dynamicdb.DynamicRoutingDataSource;
 import com.example.demo.enums.DynamicDBType;
 
