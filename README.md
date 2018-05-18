@@ -1,4 +1,7 @@
 # springboot-project
+springboot系列demo，在前一个的工程上集成新的功能
+<br>
+<br>
 
 # 01.spring-boot-mybatis-demo
 spring boot 集成mybatis，mybatis-generator<br>
