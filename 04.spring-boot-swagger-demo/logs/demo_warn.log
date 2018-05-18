@@ -1,9 +1,0 @@
-2018-05-18 14:57:53.232 WARN  [           main] ationConfigEmbeddedWebApplicationContext Line:551  : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceConfiguration': Unsatisfied dependency expressed through field 'dataSourceType'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Class'; nested exception is java.lang.IllegalArgumentException: Could not find class [com.alibaba.druid.pool.DruidDataSource]
-2018-05-18 14:57:53.341 WARN  [localhost-startStop-1] o.a.c.loader.WebappClassLoaderBase       Line:180  : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.lang.Object.wait(Native Method)
- java.lang.ref.ReferenceQueue.remove(Unknown Source)
- com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
-2018-05-18 16:20:43.264 WARN  [localhost-startStop-1] o.a.c.loader.WebappClassLoaderBase       Line:180  : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.lang.Object.wait(Native Method)
- java.lang.ref.ReferenceQueue.remove(Unknown Source)
- com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)

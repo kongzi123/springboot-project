@@ -15,4 +15,9 @@ spring boot 集成mybatis，mybatis-generator<br>
 测试发现注解添加在mapper的方法上无效，只能加在service上，如果service方法逻辑复杂（有查询又有更新），考虑增加dao层，dao再调用mapper<br>
 
 
+# 04.spring-boot-redis-demo
+集成swagger<br>
+swagger访问地址：http://localhost:8001/swagger-ui.html
+
+
 
