@@ -29,16 +29,16 @@ public class DemoServiceImpl implements IDemoService {
 	public List<Demo> queryAllDemo() {
 		List<Demo> listDemos = null;
 		//查询缓存
-		List<Demo> list = redisClient.lRange(RedisKeyConstant.ALL_DEMOS, 0, -1);
-		if(StringUtil.isEmptyList(list)) {
+		Object obj = redisClient.get(RedisKeyConstant.ALL_DEMOS);
+		if(obj == null) {
 			logger.debug("缓存中不存在demo信息");
 			listDemos = demoMapper.queryAllDemo();
 			
 			//缓存中不存在，则添加
-			redisClient.lPush(RedisKeyConstant.ALL_DEMOS, listDemos);
+			redisClient.set(RedisKeyConstant.ALL_DEMOS, listDemos);
 		} else {			
 			logger.debug("从缓存中获取demo信息");
-			listDemos = (List<Demo>)list;
+			listDemos = (List<Demo>)obj;
 		}
 		
 		return listDemos;

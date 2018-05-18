@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.common.response.ResponseEntity;
 import com.example.demo.model.Demo;
 import com.example.demo.service.IDemoService;
 
@@ -35,10 +35,11 @@ public class DemoController {
 			@ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对！") })
 	@RequestMapping(value = "/demos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public ResponseEntity<List<Demo>> queryAll() {
+	public ResponseEntity queryAll() {
 		
 		List<Demo> list = demoServiceImpl.queryAllDemo();
-		return ResponseEntity.ok(list);
+		
+		return ResponseEntity.success(list);
 	}
 	
 	@ApiOperation(value = "新增DEMO信息", notes = "新增DEMO信息")
@@ -49,10 +50,15 @@ public class DemoController {
 			@ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对！") })
 	@RequestMapping(value = "/demo", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public ResponseEntity<Integer> addDemo(@RequestBody Demo demo) {
+	public ResponseEntity addDemo(@RequestBody Demo demo) {
 		
 		int addRow = demoServiceImpl.addDemo(demo);
-		return ResponseEntity.ok(addRow);
+		
+		if(addRow > 0) {
+			return ResponseEntity.success(addRow);
+		}
+		
+		return ResponseEntity.fail();
 	}
 	
 }
